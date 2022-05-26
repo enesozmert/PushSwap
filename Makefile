@@ -1,7 +1,7 @@
 #Definition
 CC          =   gcc
 LIBFT		=	./includes/libft/libft.a
-NAME        =   aaa
+NAME        =   push_swap
 SRC_DIR     =   src
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
@@ -11,7 +11,7 @@ AR			=	ar rcs
 #Files
 
 COMMON		= 	main push_swap ft_swap ft_push ft_rotate ft_rev_rotate handler \
-arg_to_arr array_cmp sort_algoritm
+arg_to_arr array_cmp sort_algoritm list_to_arr
 
 #FileCreate
 
@@ -32,7 +32,7 @@ norm:
 			@echo Norminatte exception
 
 build:
-			@gcc $(LIBFT) $(SRC) $(CFLAGS)
+			@gcc $(LIBFT) $(SRC) $(CFLAGS) -o $(NAME)
 			@echo Build ok
 
 $(NAME):	$(OBJ)
