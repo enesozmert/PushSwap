@@ -32,12 +32,12 @@ typedef struct s_move_select
 
 //main push_swap;
 void	push_swap(int ac, char **av);
-int		compaire(t_stack *lista, t_stack *listb);
+int 	compaire(t_stack **lista, t_stack **listb);
 int		*list_to_arr(t_stack *list);
 int		array_cmp(t_stack *list, int *tab);
-t_stack *coma(t_stack *lista, t_stack *listb);
-t_stack	*push_coma(t_stack *lista, t_stack *listb);
-int ft_cmp(int num1, int num2);
+void	coma(t_stack **lista);
+void 	push_coma(t_stack **lista, t_stack **listb);
+int 	ft_cmp(int num1, int num2);
 
 //tab operation
 int		tab_avg(t_stack *list);

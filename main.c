@@ -1,5 +1,23 @@
 #include "header.h"
 
+int ft_avg_cmp(t_stack *lista, int avg)
+{
+	t_stack *list;
+	int flag;
+
+	flag = 0;
+	list = lista;
+	while (list)
+	{
+		if (avg < list->num)
+			flag = 1;
+		list = list->next;
+	}
+	if (flag == 1)
+		return (1);
+	return (0);
+}
+
 int ft_cmp(int num1, int num2)
 {
 	if (num1 <= num2)
@@ -7,30 +25,33 @@ int ft_cmp(int num1, int num2)
 	return (0);
 }
 
-t_stack *push_coma(t_stack *lista, t_stack *listb)
+void push_coma(t_stack **lista, t_stack **listb)
 {
 	int avg;
 	t_stack *tmp;
 
-	tmp = lista;
-	avg = tab_avg(lista);
-	while (tmp != 0)
+	tmp = *lista;
+	avg = tab_avg(*lista);
+	while (tmp)
 	{
-		if (ft_cmp(tmp->num, avg) == 1)
+		if (ft_avg_cmp(*lista, avg) == 0)
+			break;
+		if (ft_cmp((*lista)->num, avg) == 0)
 		{
-			handler("pb", &lista, &listb);
-			tmp = lista;
+			handler("pb", lista, listb);
+			tmp = *lista;
+		}
+		else
+		{
+			handler("ra", lista, listb);
+			tmp = *lista;
 		}
 		tmp = tmp->next;
 	}
-	ft_lstprint(lista, "a");
-	ft_lstprint(listb, "b");
-	return (lista);
 }
 
-t_stack *coma(t_stack *lista, t_stack *listb)
+void coma(t_stack **lista)
 {
-	(void)listb;
 	int i;
 	int j;
 	int sign;
@@ -41,7 +62,9 @@ t_stack *coma(t_stack *lista, t_stack *listb)
 	i = 0;
 	count = 0;
 	sign = 0;
-	lista_cpy = lista;
+	lista_cpy = *lista;
+
+	tab = list_to_arr(*lista);
 	while (lista_cpy)
 	{
 		j = 0;
@@ -51,14 +74,11 @@ t_stack *coma(t_stack *lista, t_stack *listb)
 			{
 				sign = j - i;
 				if (sign > 0)
-					handler("ra", &lista, &listb);
+					handler("ra", lista, NULL);
 				if (sign < 0)
-					handler("rra", &lista, &listb);
+					handler("rra", lista, NULL);
 				if (sign == 0)
-					handler("sa", &lista, &listb);
-				i = 0;
-				lista_cpy = lista;
-				tab = list_to_arr(lista);
+					handler("sa", lista, NULL);
 				count++;
 			}
 			j++;
@@ -66,15 +86,23 @@ t_stack *coma(t_stack *lista, t_stack *listb)
 		lista_cpy = lista_cpy->next;
 		i++;
 	}
-	// ft_lstprint(lista, "a");
-	// ft_lstprint(listb, "b");
-	return (lista);
 }
 
-int compaire(t_stack *lista, t_stack *listb)
+int compaire(t_stack **lista, t_stack **listb)
 {
 	// lista = coma(lista, listb);
-	lista = push_coma(lista, listb);
+	push_coma(lista, listb);
+	coma(lista);
+	ft_lstprint(*lista, "a");
+	ft_lstprint(*listb, "b");
+	t_stack	*list;
+
+	list = *listb;
+	while (list)
+	{
+		handler("pa", lista, listb);
+		list = list->next;
+	}
 	return (0);
 }
 
@@ -89,5 +117,5 @@ int main(int ac, char **av)
 
 	// ft_lstprint(lista, "a");
 	// ft_lstprint(listb, "b");
-	compaire(lista, listb);
+	compaire(&lista, &listb);
 }
