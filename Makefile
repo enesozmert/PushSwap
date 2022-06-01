@@ -11,7 +11,7 @@ AR			=	ar rcs
 #Files
 
 COMMON		= 	main push_swap ft_swap ft_push ft_rotate ft_rev_rotate handler \
-arg_to_arr array_cmp sort_algoritm list_to_arr
+arg_to_arr array_cmp sort_algoritm list_to_arr list_operation
 
 #FileCreate
 

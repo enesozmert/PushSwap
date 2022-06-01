@@ -1,9 +1,36 @@
 #include "header.h"
 
-
-
-int coma(t_stack *lista, t_stack *listb)
+int ft_cmp(int num1, int num2)
 {
+	if (num1 <= num2)
+		return (1);
+	return (0);
+}
+
+t_stack *push_coma(t_stack *lista, t_stack *listb)
+{
+	int avg;
+	t_stack *tmp;
+
+	tmp = lista;
+	avg = tab_avg(lista);
+	while (tmp != 0)
+	{
+		if (ft_cmp(tmp->num, avg) == 1)
+		{
+			handler("pb", &lista, &listb);
+			tmp = lista;
+		}
+		tmp = tmp->next;
+	}
+	ft_lstprint(lista, "a");
+	ft_lstprint(listb, "b");
+	return (lista);
+}
+
+t_stack *coma(t_stack *lista, t_stack *listb)
+{
+	(void)listb;
 	int i;
 	int j;
 	int sign;
@@ -11,12 +38,10 @@ int coma(t_stack *lista, t_stack *listb)
 	int *tab;
 	t_stack *lista_cpy;
 
-	i = 0; // list
-	j = 0; // arr
+	i = 0;
 	count = 0;
 	sign = 0;
 	lista_cpy = lista;
-	tab = list_to_arr(lista);
 	while (lista_cpy)
 	{
 		j = 0;
@@ -31,15 +56,9 @@ int coma(t_stack *lista, t_stack *listb)
 					handler("rra", &lista, &listb);
 				if (sign == 0)
 					handler("sa", &lista, &listb);
-				lista_cpy = lista;
 				i = 0;
+				lista_cpy = lista;
 				tab = list_to_arr(lista);
-				if (lista_cpy->num == find_min(tab))
-				{
-					handler("pb", &lista, &listb);
-				}
-				ft_lstprint(lista, "a");
-				ft_lstprint(listb, "b");
 				count++;
 			}
 			j++;
@@ -47,19 +66,20 @@ int coma(t_stack *lista, t_stack *listb)
 		lista_cpy = lista_cpy->next;
 		i++;
 	}
-	return (0);
+	// ft_lstprint(lista, "a");
+	// ft_lstprint(listb, "b");
+	return (lista);
 }
 
 int compaire(t_stack *lista, t_stack *listb)
 {
-	coma(lista, listb);
-
+	// lista = coma(lista, listb);
+	lista = push_coma(lista, listb);
 	return (0);
 }
 
 int main(int ac, char **av)
 {
-	int *tab;
 	t_stack *lista;
 	t_stack *listb;
 
@@ -67,8 +87,7 @@ int main(int ac, char **av)
 	lista = stack_arr(&av[1]);
 	listb = NULL;
 
-	tab = arg_to_arr(&av[1]);
-	ft_lstprint(lista, "a");
-	ft_lstprint(listb, "b");
+	// ft_lstprint(lista, "a");
+	// ft_lstprint(listb, "b");
 	compaire(lista, listb);
 }

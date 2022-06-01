@@ -22,7 +22,6 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
-
 typedef struct s_move_select
 {
 	char	*name;
@@ -36,8 +35,14 @@ void	push_swap(int ac, char **av);
 int		compaire(t_stack *lista, t_stack *listb);
 int		*list_to_arr(t_stack *list);
 int		array_cmp(t_stack *list, int *tab);
-int		coma(t_stack *lista, t_stack *listb);
+t_stack *coma(t_stack *lista, t_stack *listb);
+t_stack	*push_coma(t_stack *lista, t_stack *listb);
+int ft_cmp(int num1, int num2);
+
+//tab operation
+int		tab_avg(t_stack *list);
 int		find_min(int *tab);
+
 //operation 
 void	swap_a(t_stack **lista, t_stack **listb);
 void	swap_b(t_stack **lista, t_stack **listb);
