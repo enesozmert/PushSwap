@@ -36,6 +36,7 @@ int 	compaire(t_stack **lista, t_stack **listb);
 int		*list_to_arr(t_stack *list);
 int		array_cmp(t_stack *list, int *tab);
 void	coma(t_stack **lista);
+void	comb(t_stack **listb);
 void 	push_coma(t_stack **lista, t_stack **listb);
 int 	ft_cmp(int num1, int num2);
 

@@ -88,21 +88,60 @@ void coma(t_stack **lista)
 	}
 }
 
+void comb(t_stack **listb)
+{
+	int i;
+	int j;
+	int sign;
+	int count;
+	int *tab;
+	t_stack *listb_cpy;
+
+	i = 0;
+	count = 0;
+	sign = 0;
+	listb_cpy = *listb;
+
+	tab = list_to_arr(*listb);
+	while (listb_cpy)
+	{
+		j = 0;
+		while (tab[j])
+		{
+			if (listb_cpy->num == tab[j])
+			{
+				sign = j - i;
+				if (sign > 0)
+					handler("rb", NULL, listb);
+				if (sign < 0)
+					handler("rrb", NULL, listb);
+				if (sign == 0)
+					handler("sb", NULL, listb);
+				count++;
+			}
+			j++;
+		}
+		listb_cpy = listb_cpy->next;
+		i++;
+	}
+}
+
 int compaire(t_stack **lista, t_stack **listb)
 {
 	// lista = coma(lista, listb);
 	push_coma(lista, listb);
 	coma(lista);
+	comb(listb);
+	// t_stack *list;
+
+	// list = *lista;
+	// while (list)
+	// {
+	// 	handler("pb", lista, listb);
+	// 	list = list->next;
+	// }
 	ft_lstprint(*lista, "a");
 	ft_lstprint(*listb, "b");
-	t_stack	*list;
-
-	list = *listb;
-	while (list)
-	{
-		handler("pa", lista, listb);
-		list = list->next;
-	}
 	return (0);
 }
 
