@@ -73,12 +73,14 @@ void coma(t_stack **lista)
 			if (lista_cpy->num == tab[j])
 			{
 				sign = j - i;
+				printf("sign %d\n", sign);
 				if (sign > 0)
 					handler("ra", lista, NULL);
 				if (sign < 0)
 					handler("rra", lista, NULL);
 				if (sign == 0)
 					handler("sa", lista, NULL);
+				// tab = list_to_arr(*lista);
 				count++;
 			}
 			j++;
@@ -111,12 +113,14 @@ void comb(t_stack **listb)
 			if (listb_cpy->num == tab[j])
 			{
 				sign = j - i;
+				printf("sign %d\n", sign);
 				if (sign > 0)
 					handler("rb", NULL, listb);
 				if (sign < 0)
 					handler("rrb", NULL, listb);
 				if (sign == 0)
 					handler("sb", NULL, listb);
+				tab = list_to_arr(*listb);
 				count++;
 			}
 			j++;
@@ -128,21 +132,74 @@ void comb(t_stack **listb)
 
 int compaire(t_stack **lista, t_stack **listb)
 {
-	// lista = coma(lista, listb);
-	push_coma(lista, listb);
-	coma(lista);
-	comb(listb);
-	// t_stack *list;
-
-	// list = *lista;
-	// while (list)
-	// {
-	// 	handler("pb", lista, listb);
-	// 	list = list->next;
-	// }
-	ft_lstprint(*lista, "a");
-	ft_lstprint(*listb, "b");
+	(void)listb;
+	(void)lista;
 	return (0);
+}
+
+int find_sum(t_stack **lista, t_stack **listb)
+{
+	(void)listb;
+	t_stack *lista_cpy;
+	static int bit_num = 0;
+	int i;
+	int count;
+	int sum1;
+	int sum2;
+
+	sum1 = 0;
+	sum2 = 0;
+	bit_num = 0;
+	i = 0;
+	count = list_size(*lista);
+	lista_cpy = *lista;
+	while (i <= count)
+	{
+		if (lista_cpy->binary[bit_num] == 1)
+			sum1++;
+		i++;
+		lista_cpy = lista_cpy->next;
+	}
+	while (lista_cpy)
+	{
+		if (lista_cpy->binary[bit_num] == 1)
+			sum2++;
+		lista_cpy = lista_cpy->next;
+	}
+	bit_num++;
+	return (sum1 > sum2);
+}
+
+void list_sort(t_stack **lista, t_stack **listb)
+{
+	int i;
+	int move;
+	t_stack *lista_cpy;
+	t_stack *tmp;
+	(void)listb;
+
+	i = 8;
+	lista_cpy = *lista;
+	tmp = *lista;
+	while (lista_cpy)
+	{
+		if ((*lista)->binary[i] == 0)
+		{
+			handler("pb", lista, listb);
+			printf("ok\n");
+		}
+		else if ((*lista)->binary[i] == 1)
+		{
+			move = find_sum(lista, listb);
+			if (move == 1)
+				handler("rra", lista, listb);
+			else if (move == 0)
+				handler("ra", lista, listb);
+			printf("ok1\n");
+		}
+		i--;
+		lista_cpy = lista_cpy->next;
+	}
 }
 
 int main(int ac, char **av)
@@ -154,7 +211,17 @@ int main(int ac, char **av)
 	lista = stack_arr(&av[1]);
 	listb = NULL;
 
-	// ft_lstprint(lista, "a");
-	// ft_lstprint(listb, "b");
-	compaire(&lista, &listb);
+	list_sort(&lista, &listb);
+	// compaire(&lista, &listb);
+	ft_list_print(lista, "a");
+	ft_list_print(listb, "b");
+
+	ft_list_binary_print(lista, "a");
+	ft_list_binary_print(listb, "b");
+
+	// ft_list_index_print(lista, "a");
+	// ft_list_index_print(listb, "b");
+
+	// ft_list_binary_print(lista, "a");
+	// ft_list_binary_print(listb, "b");
 }

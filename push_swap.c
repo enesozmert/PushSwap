@@ -3,7 +3,7 @@
 t_stack	*stack_new(int num)
 {
 	t_stack	*tmp;
-
+	
 	tmp = malloc(sizeof(t_stack));
 	tmp->num = num;
 	tmp->next = NULL;
@@ -46,22 +46,33 @@ t_stack	*stack_arr(char **ptr)
 		stack_append(&lst, stack_new(atoi(ptr[i])));
 		i++;
 	}
+	stack_add_index(&lst);
 	return (lst);
 }
 
-void	ft_lstprint(t_stack *lst, char *name)
+void stack_add_index(t_stack **list)
 {
-	int	size;
+	t_stack *list_cpy;
+	int *tab;
+	int i;
 
-	size = 0;
-	printf("%s : ", name);
-	while (lst)
+	i = 0;
+	list_cpy = *list;
+	tab = list_to_arr(*list);
+
+	while (list_cpy)
 	{
-		printf("%d", lst->num);
-		if (lst->next)
-			printf("->");
-		lst = lst->next;
-		size++;
+		i = 0;
+		while (tab[i])
+		{
+			if (tab[i] == (list_cpy)->num)
+			{
+				(list_cpy)->index = i;
+				(list_cpy)->binary = decimal_to_binary(i);
+			}
+			i++;
+		}
+		list_cpy = (list_cpy)->next;
 	}
-	printf("\n");
+	list_cpy = *list;
 }

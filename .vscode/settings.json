@@ -4,6 +4,10 @@
 		"algorithm": "c",
 		"__debug": "c",
 		"cstring": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"__bit_reference": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"unordered_map": "c"
 	}
 }

@@ -18,6 +18,7 @@ typedef struct s_stack
 {
 	int		num;
 	int		index;
+	int 	*binary;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -33,8 +34,6 @@ typedef struct s_move_select
 //main push_swap;
 void	push_swap(int ac, char **av);
 int 	compaire(t_stack **lista, t_stack **listb);
-int		*list_to_arr(t_stack *list);
-int		array_cmp(t_stack *list, int *tab);
 void	coma(t_stack **lista);
 void	comb(t_stack **listb);
 void 	push_coma(t_stack **lista, t_stack **listb);
@@ -59,14 +58,30 @@ void	rev_rotate_rrr(t_stack **lista, t_stack **listb);
 
 //operation handler
 void	handler(char *name, t_stack **lista, t_stack **listb);
-void	ft_lstprint(t_stack *lst, char *name);
 t_stack	*stack_arr(char **ptr);
 void	stack_append(t_stack **lst, t_stack *new);
 t_stack	*stack_last(t_stack *lst);
+void	stack_add_index(t_stack **list);
 
 //sort algoritm
 int 	partition(int *array, int low, int high);
 void	quick_sort(int *array, int low, int high);
 void	swap(int *a, int *b);
+
+//tab array
+int		*list_to_arr(t_stack *list);
+int		array_cmp(t_stack *list, int *tab);
 int		*arg_to_arr(char **str);
+
+//binary
+int		*decimal_to_binary(int n);
+int		ft_count_digits_llud(long long value, int base);
+
+//lstprint
+void	ft_list_print(t_stack *lst, char *name);
+void	ft_list_index_print(t_stack *lst, char *name);
+void	ft_list_binary_print(t_stack *lst, char *name);
+
+//list
+int		list_size(t_stack *lst);
 #endif
