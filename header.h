@@ -46,6 +46,7 @@ void 	push_coma(t_stack **lista, t_stack **listb);
 int 	ft_cmp(int num1, int num2);
 int		binary_of_zero(t_stack *lista, int index);
 int		is_sorted(t_stack *lista);
+void hard_solve(t_stack **lista, t_stack **listb);
 //tab operation
 int		tab_avg(t_stack *list);
 int		find_min(int *tab);

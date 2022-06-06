@@ -206,7 +206,6 @@ void list_sort(t_stack **lista, t_stack **listb)
 	int max_bits;
 	t_stack *lista_cpy;
 	t_stack *listb_cpy;
-	(void)listb;
 
 	i = 0;
 	j = 0;
@@ -235,12 +234,6 @@ void list_sort(t_stack **lista, t_stack **listb)
 					handler("ra", lista, listb);
 				}
 			}
-			j = 0;
-			while (listb_cpy)
-			{
-				handler("pa", lista, listb);
-				listb_cpy = listb_cpy->next;
-			}
 			ft_list_print(*lista, "a");
 			ft_list_print(*listb, "b");
 			ft_list_index_print(*lista, "a");
@@ -258,12 +251,6 @@ void list_sort(t_stack **lista, t_stack **listb)
 		handler("pa", lista, listb);
 		listb_cpy = listb_cpy->next;
 	}
-	ft_list_print(*lista, "a");
-	ft_list_print(*listb, "b");
-	ft_list_index_print(*lista, "a");
-	ft_list_index_print(*listb, "b");
-	ft_list_binary_print(*lista, "a");
-	ft_list_binary_print(*listb, "b");
 }
 
 int main(int ac, char **av)
@@ -274,7 +261,14 @@ int main(int ac, char **av)
 	(void)ac;
 	lista = stack_arr(&av[1]);
 	listb = NULL;
+	//hard_solve(&lista, &listb);
 
 	list_sort(&lista, &listb);
+	ft_list_print(lista, "a");
+	ft_list_print(listb, "b");
+	ft_list_index_print(lista, "a");
+	ft_list_index_print(listb, "b");
+	ft_list_binary_print(lista, "a");
+	ft_list_binary_print(listb, "b");
 	// compaire(&lista, &listb);
 }
