@@ -201,34 +201,57 @@ int find_sum(t_stack **lista, t_stack **listb)
 void list_sort(t_stack **lista, t_stack **listb)
 {
 	int i;
+	int j;
+	int l;
+	int max_bits;
 	t_stack *lista_cpy;
 	t_stack *listb_cpy;
 	(void)listb;
 
-	i = 8;
+	i = 0;
+	j = 0;
+	l = 0;
+	max_bits = 0;
 	lista_cpy = *lista;
 	listb_cpy = *listb;
-	while (i > 5)
+	while ((list_size(*lista) - 1) >> max_bits != 0)
 	{
-		while (binary_of_zero(*lista, i) == 0)
-		{
-			if ((*lista)->binary[i] == 0)
-			{
-				handler("pb", lista, listb);
-				listb_cpy = *listb;
-			}
-			else
-			{
-				handler("ra", lista, listb);
-			}
-		}
-		while (listb_cpy)
-		{
-			handler("pa", lista, listb);
-			listb_cpy = listb_cpy->next;
-		}
-		i--;
+		max_bits++;
 	}
+	printf("max bits %d\n", max_bits);
+	while (l < 5)
+	{
+		while (i < max_bits)
+		{
+			while (binary_of_zero(*lista, 8 - i) == 0)
+			{
+				if ((*lista)->binary[8 - i] == 0)
+				{
+					handler("pb", lista, listb);
+					listb_cpy = *listb;
+				}
+				else
+				{
+					handler("ra", lista, listb);
+				}
+			}
+			j = 0;
+			while (listb_cpy)
+			{
+				handler("pa", lista, listb);
+				listb_cpy = listb_cpy->next;
+			}
+			ft_list_print(*lista, "a");
+			ft_list_print(*listb, "b");
+			ft_list_index_print(*lista, "a");
+			ft_list_index_print(*listb, "b");
+			ft_list_binary_print(*lista, "a");
+			ft_list_binary_print(*listb, "b");
+			i++;
+		}
+		l++;
+	}
+
 	listb_cpy = *listb;
 	while (listb_cpy)
 	{
@@ -237,6 +260,8 @@ void list_sort(t_stack **lista, t_stack **listb)
 	}
 	ft_list_print(*lista, "a");
 	ft_list_print(*listb, "b");
+	ft_list_index_print(*lista, "a");
+	ft_list_index_print(*listb, "b");
 	ft_list_binary_print(*lista, "a");
 	ft_list_binary_print(*listb, "b");
 }
