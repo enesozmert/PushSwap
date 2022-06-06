@@ -8,6 +8,12 @@
 #include <string.h>
 #include "./includes/libft/libft.h"
 
+typedef struct s_deneme
+{
+	int count;
+} t_deneme;
+
+
 typedef struct s_list_min_max
 {
 	int min;
@@ -38,7 +44,8 @@ void	coma(t_stack **lista);
 void	comb(t_stack **listb);
 void 	push_coma(t_stack **lista, t_stack **listb);
 int 	ft_cmp(int num1, int num2);
-
+int		binary_of_zero(t_stack *lista, int index);
+int		is_sorted(t_stack *lista);
 //tab operation
 int		tab_avg(t_stack *list);
 int		find_min(int *tab);

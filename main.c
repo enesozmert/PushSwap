@@ -137,6 +137,34 @@ int compaire(t_stack **lista, t_stack **listb)
 	return (0);
 }
 
+int is_sorted(t_stack *list)
+{
+	int nothing;
+
+	while (list && list->next)
+	{
+		nothing = list->num;
+		if (nothing > list->next->num)
+			return (0);
+		else
+			list = list->next;
+	}
+	return (1);
+}
+
+int binary_of_zero(t_stack *lista, int index)
+{
+	t_stack *temp;
+	temp = lista;
+	while (temp)
+	{
+		if (temp->binary[index] == 0)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
 int find_sum(t_stack **lista, t_stack **listb)
 {
 	(void)listb;
@@ -173,33 +201,47 @@ int find_sum(t_stack **lista, t_stack **listb)
 void list_sort(t_stack **lista, t_stack **listb)
 {
 	int i;
-	int move;
 	t_stack *lista_cpy;
-	t_stack *tmp;
+	t_stack *listb_cpy;
 	(void)listb;
 
 	i = 8;
 	lista_cpy = *lista;
-	tmp = *lista;
-	while (lista_cpy)
+	listb_cpy = *listb;
+	while (is_sorted(*lista) == 0)
 	{
-		if ((*lista)->binary[i] == 0)
+		while (binary_of_zero(*lista, i) == 0)
 		{
-			handler("pb", lista, listb);
-			printf("ok\n");
-		}
-		else if ((*lista)->binary[i] == 1)
-		{
-			move = find_sum(lista, listb);
-			if (move == 1)
+			if ((*lista)->binary[i] == 0)
+			{
+				handler("pb", lista, listb);
+				printf("pb_ok11\n");
+				listb_cpy = *listb;
+			}
+			else
+			{
 				handler("rra", lista, listb);
-			else if (move == 0)
-				handler("ra", lista, listb);
-			printf("ok1\n");
+				printf("rra_ok11\n");
+			}
 		}
+		printf("\n-------\n");
+		while (listb_cpy)
+		{
+			printf("pa_ok11\n");
+			handler("pa", lista, listb);
+			listb_cpy = listb_cpy->next;
+		}
+		lista_cpy = *lista;
 		i--;
-		lista_cpy = lista_cpy->next;
 	}
+	ft_list_index_print(*lista, "a");
+	ft_list_index_print(*listb, "b");
+
+	ft_list_binary_print(*lista, "a");
+	ft_list_binary_print(*listb, "b");
+
+	ft_list_print(*lista, "a");
+	ft_list_print(*listb, "b");
 }
 
 int main(int ac, char **av)
@@ -213,15 +255,4 @@ int main(int ac, char **av)
 
 	list_sort(&lista, &listb);
 	// compaire(&lista, &listb);
-	ft_list_print(lista, "a");
-	ft_list_print(listb, "b");
-
-	ft_list_binary_print(lista, "a");
-	ft_list_binary_print(listb, "b");
-
-	// ft_list_index_print(lista, "a");
-	// ft_list_index_print(listb, "b");
-
-	// ft_list_binary_print(lista, "a");
-	// ft_list_binary_print(listb, "b");
 }
