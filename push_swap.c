@@ -63,7 +63,7 @@ void stack_add_index(t_stack **list)
 	while (list_cpy)
 	{
 		i = 0;
-		while (tab[i])
+		while (i < list_size(*list))
 		{
 			if (tab[i] == (list_cpy)->num)
 			{

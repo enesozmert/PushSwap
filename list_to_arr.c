@@ -6,7 +6,7 @@ int *list_to_arr(t_stack *list)
 	int c;
 	int *tab;
 	t_stack *list_cpy;
-
+	
 	i = 0;
 	c = 0;
 	list_cpy = list;
@@ -26,5 +26,6 @@ int *list_to_arr(t_stack *list)
 		i++;
 	}
 	quick_sort(tab, 0, i - 1);
+	
 	return (tab);
 }

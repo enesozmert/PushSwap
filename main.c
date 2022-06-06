@@ -208,40 +208,37 @@ void list_sort(t_stack **lista, t_stack **listb)
 	i = 8;
 	lista_cpy = *lista;
 	listb_cpy = *listb;
-	while (is_sorted(*lista) == 0)
+	while (i > 5)
 	{
 		while (binary_of_zero(*lista, i) == 0)
 		{
 			if ((*lista)->binary[i] == 0)
 			{
 				handler("pb", lista, listb);
-				printf("pb_ok11\n");
 				listb_cpy = *listb;
 			}
 			else
 			{
-				handler("rra", lista, listb);
-				printf("rra_ok11\n");
+				handler("ra", lista, listb);
 			}
 		}
-		printf("\n-------\n");
 		while (listb_cpy)
 		{
-			printf("pa_ok11\n");
 			handler("pa", lista, listb);
 			listb_cpy = listb_cpy->next;
 		}
-		lista_cpy = *lista;
 		i--;
 	}
-	ft_list_index_print(*lista, "a");
-	ft_list_index_print(*listb, "b");
-
-	ft_list_binary_print(*lista, "a");
-	ft_list_binary_print(*listb, "b");
-
+	listb_cpy = *listb;
+	while (listb_cpy)
+	{
+		handler("pa", lista, listb);
+		listb_cpy = listb_cpy->next;
+	}
 	ft_list_print(*lista, "a");
 	ft_list_print(*listb, "b");
+	ft_list_binary_print(*lista, "a");
+	ft_list_binary_print(*listb, "b");
 }
 
 int main(int ac, char **av)
