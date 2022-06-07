@@ -165,11 +165,9 @@ int binary_of_zero(t_stack *lista, int index)
 	return (1);
 }
 
-int find_sum(t_stack **lista, t_stack **listb)
+int find_sum(t_stack **lista, int digit)
 {
-	(void)listb;
 	t_stack *lista_cpy;
-	static int bit_num = 0;
 	int i;
 	int count;
 	int sum1;
@@ -177,41 +175,41 @@ int find_sum(t_stack **lista, t_stack **listb)
 
 	sum1 = 0;
 	sum2 = 0;
-	bit_num = 0;
 	i = 0;
 	count = list_size(*lista);
 	lista_cpy = *lista;
-	while (i <= count)
+	while (i < count / 2)
 	{
-		if (lista_cpy->binary[bit_num] == 1)
+		if (lista_cpy->binary[digit] == 1)
 			sum1++;
 		i++;
 		lista_cpy = lista_cpy->next;
 	}
-	while (lista_cpy)
+	while (i < count / 2)
 	{
-		if (lista_cpy->binary[bit_num] == 1)
+		if (lista_cpy->binary[digit] == 1)
 			sum2++;
-		lista_cpy = lista_cpy->next;
+		i++;
 	}
-	bit_num++;
+	// printf("sum1: %d\n", sum1);
+	// printf("sum2: %d\n", sum2);
 	return (sum1 > sum2);
 }
 
 void list_sort(t_stack **lista, t_stack **listb)
 {
 	int i;
-	int j;
+	// int j;
 	int l;
 	int max_bits;
-	t_stack *lista_cpy;
+	// t_stack *lista_cpy;
 	t_stack *listb_cpy;
 
 	i = 0;
-	j = 0;
+	// j = 0;
 	l = 0;
 	max_bits = 0;
-	lista_cpy = *lista;
+	// lista_cpy = *lista;
 	listb_cpy = *listb;
 	while ((list_size(*lista) - 1) >> max_bits != 0)
 	{
@@ -257,18 +255,29 @@ int main(int ac, char **av)
 {
 	t_stack *lista;
 	t_stack *listb;
-
+	// char **argv;
+	
 	(void)ac;
+	// argv = fill_args(ac, av);
+	// check_double(argv, -1, -1);
+	// check_number(argv, -1, -1);
 	lista = stack_arr(&av[1]);
 	listb = NULL;
-	//hard_solve(&lista, &listb);
+	hard_solve(&lista, &listb);
 
-	list_sort(&lista, &listb);
-	ft_list_print(lista, "a");
-	ft_list_print(listb, "b");
-	ft_list_index_print(lista, "a");
-	ft_list_index_print(listb, "b");
-	ft_list_binary_print(lista, "a");
-	ft_list_binary_print(listb, "b");
+	// list_sort(&lista, &listb);
+	// ft_list_print(lista, "a");
+	// ft_list_print(listb, "b");
+	// ft_list_index_print(lista, "a");
+	// ft_list_index_print(listb, "b");
+	// ft_list_binary_print(lista, "a");
+	// ft_list_binary_print(listb, "b");
 	// compaire(&lista, &listb);
+
+	// if (is_sorted(lista))
+	// {
+	// 	printf("okey\n");
+	// }
+	// else
+	// 	printf("nokey\n");
 }

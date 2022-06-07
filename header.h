@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <limits.h>
 #include "./includes/libft/libft.h"
 
 typedef struct s_deneme
@@ -46,7 +47,11 @@ void 	push_coma(t_stack **lista, t_stack **listb);
 int 	ft_cmp(int num1, int num2);
 int		binary_of_zero(t_stack *lista, int index);
 int		is_sorted(t_stack *lista);
-void hard_solve(t_stack **lista, t_stack **listb);
+void	hard_solve(t_stack **lista, t_stack **listb);
+void	check_double(char **argv, int i, int j);
+void	check_number(char **s, int i, int j);
+void	ft_exit(char *s);
+char	**fill_args(int ac, char **av);
 //tab operation
 int		tab_avg(t_stack *list);
 int		find_min(int *tab);
@@ -80,10 +85,9 @@ void	swap(int *a, int *b);
 int		*list_to_arr(t_stack *list);
 int		array_cmp(t_stack *list, int *tab);
 int		*arg_to_arr(char **str);
-
+int		find_sum(t_stack **lista, int digit);
 //binary
 int		*decimal_to_binary(int n);
-int		ft_count_digits_llud(long long value, int base);
 
 //lstprint
 void	ft_list_print(t_stack *lst, char *name);
