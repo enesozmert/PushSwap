@@ -5,11 +5,11 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 {
 	int i;
 	int count_a;
-	// int count_b;
+	int count_b;
 
 	i = 0;
 	count_a = list_size(*lista);
-	// count_b = list_size(*listb);
+	count_b = list_size(*listb);
 	if (list_size(*lista) > 0)
 	{
 		// while (i < count_a)
@@ -49,36 +49,36 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 			}
 			else
 			{
-				handler("ra", lista, listb);
-				printf("ra\n");
+				handler("rra", lista, listb);
+				printf("rra\n");
 				(*count_move)++;
 			}
 			i++;
 		}
-		// i = 0;
-		// count_b = list_size(*listb);
-		// while (i < count_b)
-		// {
-		// 	if ((*listb)->binary[digit] == 1)
-		// 	{
-		// 		handler("pa", lista, listb);
-		// 		printf("pa\n");
-		// 		(*count_move)++;
-		// 	}
-		// 	else
-		// 	{
-		// 		handler("rb", lista, listb);
-		// 		printf("rb\n");
-		// 		(*count_move)++;
-		// 	}
-		// 	i++;
-		// }
-		while (list_size(*listb) > 0)
+		i = 0;
+		count_b = list_size(*listb);
+		while (i < count_b)
 		{
-			handler("pa", lista, listb);
-			printf("pa\n");
-			(*count_move)++;
+			if ((*listb)->binary[digit] == 0)
+			{
+				handler("pa", lista, listb);
+				printf("pa\n");
+				(*count_move)++;
+			}
+			else
+			{
+				handler("rb", lista, listb);
+				printf("rb\n");
+				(*count_move)++;
+			}
+			i++;
 		}
+		// while (list_size(*listb) > 0)
+		// {
+		// 	handler("pa", lista, listb);
+		// 	printf("pa\n");
+		// 	(*count_move)++;
+		// }
 	}
 }
 
