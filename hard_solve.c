@@ -5,6 +5,39 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 {
 	int i;
 	int count_a;
+	// int count_b;
+
+	i = 0;
+	count_a = list_size(*lista);
+	// count_b = list_size(*listb);
+	if (list_size(*lista) > 0)
+	{
+		while (i < count_a)
+		{
+			if ((*lista)->binary[digit] == 0)
+			{
+				handler("pb", lista, listb);
+				(*count_move)++;
+			}
+			else
+			{
+				handler("ra", lista, listb);
+				(*count_move)++;
+			}
+			i++;
+		}
+		while (list_size(*listb) > 0)
+		{
+			handler("pa", lista, listb);
+			(*count_move)++;
+		}
+	}
+}
+
+static void normal_sort(t_stack **lista, t_stack **listb, int digit, int *count_move)
+{
+	int i;
+	int count_a;
 	int count_b;
 
 	i = 0;
@@ -12,73 +45,48 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 	count_b = list_size(*listb);
 	if (list_size(*lista) > 0)
 	{
-		// while (i < count_a)
-		// {
-		// 	if ((*lista)->binary[digit] == 0)
-		// 	{
-		// 		handler("pb", lista, listb);
-		// 		printf("pb\n");
-		// 		(*count_move)++;
-		// 	}
-		// 	else
-		// 	{
-		// 		if (find_sum(lista, digit) == 1)
-		// 		{
-		// 			handler("ra", lista, listb);
-		// 			printf("ra\n");
-		// 			(*count_move)++;
-		// 		}
-		// 		else
-		// 		{
-		// 			handler("rra", lista, listb);
-		// 			printf("rra\n");
-		// 			(*count_move)++;
-		// 		}
-		// 	}
-		// 	i++;
-		// }
-		// i = 0;
-		// count_a = list_size(*lista);
 		while (i < count_a)
 		{
 			if ((*lista)->binary[digit] == 0)
 			{
 				handler("pb", lista, listb);
-				printf("pb\n");
 				(*count_move)++;
 			}
 			else
 			{
-				handler("rra", lista, listb);
-				printf("rra\n");
+				handler("ra", lista, listb);
 				(*count_move)++;
 			}
 			i++;
 		}
-		i = 0;
+		while (list_size(*lista) > 0)
+		{
+			handler("pb", lista, listb);
+			(*count_move)++;
+		}
+	}
+	else
+	{
 		count_b = list_size(*listb);
 		while (i < count_b)
 		{
-			if ((*listb)->binary[digit] == 0)
+			if ((*listb)->binary[digit] == 1)
 			{
 				handler("pa", lista, listb);
-				printf("pa\n");
 				(*count_move)++;
 			}
 			else
 			{
 				handler("rb", lista, listb);
-				printf("rb\n");
 				(*count_move)++;
 			}
 			i++;
 		}
-		// while (list_size(*listb) > 0)
-		// {
-		// 	handler("pa", lista, listb);
-		// 	printf("pa\n");
-		// 	(*count_move)++;
-		// }
+		while (list_size(*listb) > 0)
+		{
+			handler("pa", lista, listb);
+			(*count_move)++;
+		}
 	}
 }
 
@@ -95,7 +103,13 @@ void hard_solve(t_stack **lista, t_stack **listb)
 		max_bits++;
 	while (i < max_bits)
 	{
-		count_sort(lista, listb, 8 - i, &count_move);
+		printf("i : %d, max_bits %d", i, max_bits);
+		if (i == max_bits - 1 && i % 2 == 0)
+		{
+			count_sort(lista, listb, 8 - i, &count_move);
+		}
+		else
+			normal_sort(lista, listb, 8 - i, &count_move);
 		i++;
 	}
 	printf("count move %d\n", count_move);

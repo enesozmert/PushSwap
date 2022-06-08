@@ -3,6 +3,7 @@
 void handler(char *name, t_stack **lista, t_stack **listb)
 {
 	int i;
+	t_move move;
 	t_move_select move_selects[12];
 
 	i = 0;
@@ -22,7 +23,8 @@ void handler(char *name, t_stack **lista, t_stack **listb)
 	{
 		if (strncmp(name, move_selects[i].name, strlen(name)) == 0)
 		{
-			//printf("ope: %s \n", move_selects[i].name);
+			printf("%s\n", move_selects[i].name);
+			move.count++;
 			move_selects[i].f(lista, listb);
 		}
 		i++;

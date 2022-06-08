@@ -9,10 +9,10 @@
 #include <limits.h>
 #include "./includes/libft/libft.h"
 
-typedef struct s_deneme
+typedef struct s_move
 {
 	int count;
-} t_deneme;
+} t_move;
 
 
 typedef struct s_list_min_max
@@ -48,6 +48,7 @@ int 	ft_cmp(int num1, int num2);
 int		binary_of_zero(t_stack *lista, int index);
 int		is_sorted(t_stack *lista);
 void	hard_solve(t_stack **lista, t_stack **listb);
+void	medium_solve(t_stack **lista, t_stack **listb);
 void	check_double(char **argv, int i, int j);
 void	check_number(char **s, int i, int j);
 void	ft_exit(char *s);
