@@ -26,6 +26,7 @@ void handler(char *name, t_stack **lista, t_stack **listb)
 			printf("%s\n", move_selects[i].name);
 			move.count++;
 			move_selects[i].f(lista, listb);
+			break ;
 		}
 		i++;
 	}

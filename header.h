@@ -7,6 +7,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <limits.h>
+#include <math.h>
 #include "./includes/libft/libft.h"
 
 typedef struct s_move
@@ -26,6 +27,7 @@ typedef struct s_stack
 	int		num;
 	int		index;
 	int 	*binary;
+	int		*digits;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -89,12 +91,13 @@ int		*arg_to_arr(char **str);
 int		find_sum(t_stack **lista, int digit);
 //binary
 int		*decimal_to_binary(int n);
+int		*number_to_digits(int n);
 
 //lstprint
 void	ft_list_print(t_stack *lst, char *name);
 void	ft_list_index_print(t_stack *lst, char *name);
 void	ft_list_binary_print(t_stack *lst, char *name);
-
+void	ft_list_digits_print(t_stack *lst, char *name);
 //list
 int		list_size(t_stack *lst);
 #endif

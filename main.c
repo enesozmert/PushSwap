@@ -84,7 +84,6 @@ int main(int ac, char **av)
 	ft_list_index_print(listb, "b");
 	ft_list_binary_print(lista, "a");
 	ft_list_binary_print(listb, "b");
-
 	if (is_sorted(lista))
 	{
 		printf("okey\n");
