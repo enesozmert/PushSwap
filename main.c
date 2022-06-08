@@ -78,17 +78,17 @@ int main(int ac, char **av)
 	// check_number(argv, 0, 0);
 	hard_solve(&lista, &listb);
 
-	ft_list_print(lista, "a");
-	ft_list_print(listb, "b");
-	ft_list_index_print(lista, "a");
-	ft_list_index_print(listb, "b");
-	ft_list_binary_print(lista, "a");
-	ft_list_binary_print(listb, "b");
-	if (is_sorted(lista))
-	{
-		printf("okey\n");
-	}
-	else
-		printf("nokey\n");
+	// ft_list_print(lista, "a");
+	// ft_list_print(listb, "b");
+	// ft_list_index_print(lista, "a");
+	// ft_list_index_print(listb, "b");
+	// ft_list_binary_print(lista, "a");
+	// ft_list_binary_print(listb, "b");
+	// if (is_sorted(lista))
+	// {
+	// 	printf("okey\n");
+	// }
+	// else
+	// 	printf("nokey\n");
 	// compaire(&lista, &listb);
 }
