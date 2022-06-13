@@ -54,6 +54,8 @@ void	ft_list_binary_print(t_stack *lst, char *name)
 		printf(" ");
 		if (lst->next)
 			printf("->");
+		if (size % 2 == 0)
+			printf("\n");
 		lst = lst->next;
 		size++;
 	}

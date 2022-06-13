@@ -12,7 +12,7 @@ AR			=	ar rcs
 
 COMMON		= 	main push_swap ft_swap ft_push ft_rotate ft_rev_rotate handler \
 arg_to_arr array_cmp sort_algoritm list_to_arr list_operation decimal_to_binary \
-list_print list_size hard_solve medium_solve number_to_digits
+list_print list_size hard_solve medium_solve number_to_digits write_file
 
 #FileCreate
 

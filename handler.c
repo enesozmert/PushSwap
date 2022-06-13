@@ -3,7 +3,7 @@
 void handler(char *name, t_stack **lista, t_stack **listb)
 {
 	int i;
-	t_move move;
+	static int count = 0;
 	t_move_select move_selects[12];
 
 	i = 0;
@@ -23,8 +23,9 @@ void handler(char *name, t_stack **lista, t_stack **listb)
 	{
 		if (strncmp(name, move_selects[i].name, strlen(name)) == 0)
 		{
+			// printf("%s lista => %d, listb => %d count %d\n", move_selects[i].name, (*lista)->num, (*listb) == NULL ? 0 : (*listb)->num, count);
 			printf("%s\n", move_selects[i].name);
-			move.count++;
+			count++;
 			move_selects[i].f(lista, listb);
 			break ;
 		}

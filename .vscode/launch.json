@@ -9,15 +9,24 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/push_swap",
-			"args": ["3","9","0","6","8","7", "1", "2", "5", "4"],
-			"stopAtEntry": true,
+			"args": [
+				"3",
+				"9",
+				"0",
+				"6",
+				"8",
+				"7",
+				"1",
+				"2",
+				"5",
+				"4"
+			],
+			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "lldb",
 			"preLaunchTask": "builder"
-			
 		}
-
 	]
 }

@@ -49,6 +49,7 @@ void 	push_coma(t_stack **lista, t_stack **listb);
 int 	ft_cmp(int num1, int num2);
 int		binary_of_zero(t_stack *lista, int index);
 int		is_sorted(t_stack *lista);
+int		is_rev_sorted(t_stack *list);
 void	hard_solve(t_stack **lista, t_stack **listb);
 void	medium_solve(t_stack **lista, t_stack **listb);
 void	check_double(char **argv, int i, int j);
@@ -100,4 +101,7 @@ void	ft_list_binary_print(t_stack *lst, char *name);
 void	ft_list_digits_print(t_stack *lst, char *name);
 //list
 int		list_size(t_stack *lst);
+
+//writer
+void	write_file();
 #endif

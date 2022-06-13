@@ -1,4 +1,3 @@
-
 #include "header.h"
 
 static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_move)
@@ -15,6 +14,7 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 		count_b = list_size(*listb);
 		while (i < count_b)
 		{
+
 			if ((*listb)->binary[digit] == 1)
 			{
 				handler("pa", lista, listb);
@@ -35,6 +35,10 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 			{
 				handler("pb", lista, listb);
 				(*count_move)++;
+				if (is_sorted(*lista) && is_rev_sorted(*listb))
+				{
+					return;
+				}
 			}
 			else
 			{
@@ -57,7 +61,7 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 // 	{
 // 		while (i < count_a)
 // 		{
-// 			if ((*lista)->binary[digit] == 1)
+// 			if ((*lista)->binary[digit] == 0)
 // 			{
 // 				handler("pb", lista, listb);
 // 				(*count_move)++;
@@ -70,9 +74,9 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 // 			i++;
 // 		}
 // 	}
-// 	while (list_size(*lista) > 0)
+// 	while (list_size(*listb) > 0)
 // 	{
-// 		handler("pb", lista, listb);
+// 		handler("pa", lista, listb);
 // 		(*count_move)++;
 // 	}
 // }
@@ -93,16 +97,20 @@ void hard_solve(t_stack **lista, t_stack **listb)
 		// printf("i : %d, max_bits %d", i, max_bits);
 		// if (i == max_bits - 1)
 		// {
-		// 	end_sort(lista, listb, 8 - i, &count_move);
+		// 	exit (0);
+		// 	// end_sort(lista, listb, 8 - i, &count_move);
 		// }
 		// else
 		count_sort(lista, listb, 8 - i, &count_move);
+		if (is_sorted(*lista) && is_rev_sorted(*listb))
+		{
+			while (list_size(*listb) > 0)
+			{
+				handler("pa", lista, listb);
+				(count_move)++;
+			}
+		}
 		i++;
-	}
-	while (list_size(*listb) > 0)
-	{
-		handler("pa", lista, listb);
-		(count_move)++;
 	}
 	// printf("count move %d\n", count_move);
 }

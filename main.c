@@ -22,6 +22,21 @@ int is_sorted(t_stack *list)
 	return (1);
 }
 
+int is_rev_sorted(t_stack *list)
+{
+	int nothing;
+
+	while (list && list->next)
+	{
+		nothing = list->num;
+		if (nothing < list->next->num)
+			return (0);
+		else
+			list = list->next;
+	}
+	return (1);
+}
+
 int binary_of_zero(t_stack *lista, int index)
 {
 	t_stack *temp;
@@ -90,5 +105,6 @@ int main(int ac, char **av)
 	// }
 	// else
 	// 	printf("nokey\n");
+	// write_file();
 	// compaire(&lista, &listb);
 }
