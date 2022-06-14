@@ -85,26 +85,28 @@ int main(int ac, char **av)
 	t_stack *listb;
 	// char **argv;
 
-	(void)ac;
 	lista = stack_arr(&av[1]);
 	listb = NULL;
 	// argv = fill_args(ac, av);
 	// check_double(argv, 0, 0);
 	// check_number(argv, 0, 0);
-	hard_solve(&lista, &listb);
+	if (ac > 0 && ac < 7)
+		medium_solve(&lista, &listb);
+	else
+		hard_solve(&lista, &listb);
 
-	// ft_list_print(lista, "a");
-	// ft_list_print(listb, "b");
-	// ft_list_index_print(lista, "a");
-	// ft_list_index_print(listb, "b");
-	// ft_list_binary_print(lista, "a");
-	// ft_list_binary_print(listb, "b");
-	// if (is_sorted(lista))
-	// {
-	// 	printf("okey\n");
-	// }
-	// else
-	// 	printf("nokey\n");
+	ft_list_print(lista, "a");
+	ft_list_print(listb, "b");
+	ft_list_index_print(lista, "a");
+	ft_list_index_print(listb, "b");
+	ft_list_binary_print(lista, "a");
+	ft_list_binary_print(listb, "b");
+	if (is_sorted(lista))
+	{
+		printf("okey\n");
+	}
+	else
+		printf("nokey\n");
 	// write_file();
 	// compaire(&lista, &listb);
 }

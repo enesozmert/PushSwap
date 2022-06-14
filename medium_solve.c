@@ -1,71 +1,32 @@
 
 #include "header.h"
 
-static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_move)
+static void count_sort(t_stack **lista, t_stack **listb)
 {
-    int i;
-    int count_a;
-    int count_b;
-
-    i = 0;
-    count_a = list_size(*lista);
-    count_b = list_size(*listb);
-    if (list_size(*lista) > 0)
+    if ((*lista)->index > (*lista)->next->index
+    && (*lista)->index < (*lista)->next->next->index) // 2 1 3
+        handler("sa", lista, listb);
+    else if ((*lista)->index > (*lista)->next->index
+    && (*lista)->next->index > (*lista)->next->next->index) // 3 2 1
     {
-        while (i < count_a)
-        {
-            if ((*lista)->binary[digit] == 0)
-            {
-                handler("pb", lista, listb);
-                (*count_move)++;
-            }
-            else
-            {
-                handler("ra", lista, listb);
-                (*count_move)++;
-            }
-            i++;
-        }
-        i = 0;
-        count_b = list_size(*listb);
-        while (i < count_b)
-        {
-            if ((*listb)->binary[digit] == 1)
-            {
-                handler("pa", lista, listb);
-                (*count_move)++;
-            }
-            else
-            {
-                handler("rb", lista, listb);
-                (*count_move)++;
-            }
-            i++;
-        }
+        handler("sa", lista, listb);
+        handler("rra",lista, listb);
     }
+    else if ((*lista)->index > (*lista)->next->index
+    && (*lista)->next->index < (*lista)->next->next->index) // 3 1 2
+        handler("ra", lista, listb);
+    else if ((*lista)->index < (*lista)->next->index
+    && (*lista)->index < (*lista)->next->next->index) // 1 3 2
+    {
+        handler("sa", lista, listb);
+        handler("ra", lista, listb);
+    }
+    else if ((*lista)->next->next->index < (*lista)->index
+    && (*lista)->index < (*lista)->next->index) // 2 3 1
+        handler("rra", lista, listb);
 }
 
 void medium_solve(t_stack **lista, t_stack **listb)
 {
-    int i;
-    int max_bits;
-    int count_move;
-
-    i = 0;
-    max_bits = 0;
-    count_move = 0;
-    while (list_size(*lista) >> max_bits != 0)
-        max_bits++;
-    while (i < max_bits)
-    {
-        printf("i : %d, max_bits %d", i, max_bits);
-        count_sort(lista, listb, 8 - i, &count_move);
-        i++;
-    }
-    while (list_size(*listb) > 0)
-    {
-        handler("pa", lista, listb);
-        (count_move)++;
-    }
-    printf("count move %d\n", count_move);
+    count_sort(lista, listb);
 }
