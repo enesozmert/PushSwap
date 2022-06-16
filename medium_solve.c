@@ -1,32 +1,41 @@
-
 #include "header.h"
 
-static void count_sort(t_stack **lista, t_stack **listb)
+static void count_sort(t_stack **lista, t_stack **listb, int *count_move)
 {
-    if ((*lista)->index > (*lista)->next->index
-    && (*lista)->index < (*lista)->next->next->index) // 2 1 3
-        handler("sa", lista, listb);
-    else if ((*lista)->index > (*lista)->next->index
-    && (*lista)->next->index > (*lista)->next->next->index) // 3 2 1
+    int i;
+    int count_a;
+    int count_b;
+
+    i = 0;
+    count_a = list_size(*lista);
+    count_b = list_size(*listb);
+    if (list_size(*lista) > 0)
     {
-        handler("sa", lista, listb);
-        handler("rra",lista, listb);
+        i = 0;
+        count_a = list_size(*lista);
+        while (i < list_size(*lista))
+        {
+            if (is_sorted(*lista) && is_rev_sorted(*listb))
+                return;
+            if ((*lista)->index == 0 || (*lista)->index == 1)
+            {
+                handler("pb", lista, listb);
+                (*count_move)++;
+            }
+            else
+            {
+                handler("ra", lista, listb);
+                (*count_move)++;
+            }
+            i++;
+        }
     }
-    else if ((*lista)->index > (*lista)->next->index
-    && (*lista)->next->index < (*lista)->next->next->index) // 3 1 2
-        handler("ra", lista, listb);
-    else if ((*lista)->index < (*lista)->next->index
-    && (*lista)->index < (*lista)->next->next->index) // 1 3 2
-    {
-        handler("sa", lista, listb);
-        handler("ra", lista, listb);
-    }
-    else if ((*lista)->next->next->index < (*lista)->index
-    && (*lista)->index < (*lista)->next->index) // 2 3 1
-        handler("rra", lista, listb);
 }
 
 void medium_solve(t_stack **lista, t_stack **listb)
 {
-    count_sort(lista, listb);
+    int count_move;
+
+    count_move = 0;
+    count_sort(lista, listb, &count_move);
 }

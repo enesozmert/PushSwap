@@ -67,7 +67,7 @@ void stack_add_index(t_stack **list)
 		{
 			if (tab[i] == (list_cpy)->num)
 			{
-				(list_cpy)->index = (i);
+				(list_cpy)->index = i;
 				(list_cpy)->binary = decimal_to_binary(i);
 			}
 			(list_cpy)->digits = number_to_digits((list_cpy)->num);

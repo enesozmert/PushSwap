@@ -52,6 +52,7 @@ int		is_sorted(t_stack *lista);
 int		is_rev_sorted(t_stack *list);
 void	hard_solve(t_stack **lista, t_stack **listb);
 void	medium_solve(t_stack **lista, t_stack **listb);
+void	basic_solve(t_stack **lista, t_stack **listb);
 void	check_double(char **argv, int i, int j);
 void	check_number(char **s, int i, int j);
 void	ft_exit(char *s);

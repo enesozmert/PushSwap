@@ -9,12 +9,11 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 	i = 0;
 	count_a = list_size(*lista);
 	count_b = list_size(*listb);
-	if (list_size(*lista) > 0)
+	if (list_size(*listb) > 0)
 	{
 		count_b = list_size(*listb);
 		while (i < count_b)
 		{
-
 			if ((*listb)->binary[digit] == 1)
 			{
 				handler("pa", lista, listb);
@@ -27,18 +26,19 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 			}
 			i++;
 		}
+	}
+	if (list_size(*lista) > 0)
+	{
 		i = 0;
 		count_a = list_size(*lista);
 		while (i < count_a)
 		{
+			if (is_sorted(*lista) && is_rev_sorted(*listb))
+				return;
 			if ((*lista)->binary[digit] == 0)
 			{
 				handler("pb", lista, listb);
 				(*count_move)++;
-				if (is_sorted(*lista) && is_rev_sorted(*listb))
-				{
-					return;
-				}
 			}
 			else
 			{
@@ -49,37 +49,6 @@ static void count_sort(t_stack **lista, t_stack **listb, int digit, int *count_m
 		}
 	}
 }
-
-// static void end_sort(t_stack **lista, t_stack **listb, int digit, int *count_move)
-// {
-// 	int i;
-// 	int count_a;
-
-// 	i = 0;
-// 	count_a = list_size(*lista);
-// 	if (list_size(*lista) > 0)
-// 	{
-// 		while (i < count_a)
-// 		{
-// 			if ((*lista)->binary[digit] == 0)
-// 			{
-// 				handler("pb", lista, listb);
-// 				(*count_move)++;
-// 			}
-// 			else
-// 			{
-// 				handler("ra", lista, listb);
-// 				(*count_move)++;
-// 			}
-// 			i++;
-// 		}
-// 	}
-// 	while (list_size(*listb) > 0)
-// 	{
-// 		handler("pa", lista, listb);
-// 		(*count_move)++;
-// 	}
-// }
 
 void hard_solve(t_stack **lista, t_stack **listb)
 {
