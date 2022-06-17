@@ -15,8 +15,8 @@ static void count_sort(t_stack **lista, t_stack **listb)
     else if ((*lista)->index > (*lista)->next->index
     && (*lista)->next->index < (*lista)->next->next->index) // 3 1 2
         handler("ra", lista, listb);
-    else if ((*lista)->index < (*lista)->next->index
-    && (*lista)->index < (*lista)->next->next->index) // 1 3 2
+    else if ((*lista)->index < (*lista)->next->next->index
+    && (*lista)->next->index > (*lista)->next->next->index) // 1 3 2
     {
         handler("sa", lista, listb);
         handler("ra", lista, listb);
@@ -24,6 +24,9 @@ static void count_sort(t_stack **lista, t_stack **listb)
     else if ((*lista)->next->next->index < (*lista)->index
     && (*lista)->index < (*lista)->next->index) // 2 3 1
         handler("rra", lista, listb);
+    else if ((*lista)->index < (*lista)->next->index 
+    && (*lista)->next->index < (*lista)->next->next->index)
+        return ;
 }
 
 void basic_solve(t_stack **lista, t_stack **listb)

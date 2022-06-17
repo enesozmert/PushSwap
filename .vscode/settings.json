@@ -5,6 +5,7 @@
 		"string_view": "c",
 		"vector": "c",
 		"algorithm": "c",
-		"ratio": "c"
+		"ratio": "c",
+		"header.h": "c"
 	}
 }

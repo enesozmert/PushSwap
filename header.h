@@ -57,6 +57,7 @@ void	check_double(char **argv, int i, int j);
 void	check_number(char **s, int i, int j);
 void	ft_exit(char *s);
 char	**fill_args(int ac, char **av);
+
 //tab operation
 int		tab_avg(t_stack *list);
 int		find_min(int *tab);

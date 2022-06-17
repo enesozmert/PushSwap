@@ -83,16 +83,16 @@ int main(int ac, char **av)
 {
 	t_stack *lista;
 	t_stack *listb;
-	// char **argv;
+	char **argv;
 
 	lista = stack_arr(&av[1]);
 	listb = NULL;
-	// argv = fill_args(ac, av);
-	// check_double(argv, 0, 0);
-	// check_number(argv, 0, 0);
+	argv = fill_args(ac, av);
+	check_double(argv, 0, 0);
+	check_number(argv, 0, 0);
 	if (ac == 4)
 		basic_solve(&lista, &listb);
-	else if (ac == 5)
+	else if (ac == 6)
 		medium_solve(&lista, &listb);
 	else
 		hard_solve(&lista, &listb);
