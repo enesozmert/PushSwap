@@ -6,18 +6,18 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 16:00:04 by eozmert           #+#    #+#             */
-/*   Updated: 2022/06/20 16:00:04 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:39:57 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int *decimal_to_binary(int n)
+int	*decimal_to_binary(int n)
 {
-	int *arr;
-	long long bin;
-	int rem;
-	int i;
+	int			*arr;
+	long long	bin;
+	int			rem;
+	int			i;
 
 	bin = 0;
 	rem = 1;

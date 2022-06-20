@@ -6,15 +6,15 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 16:01:15 by eozmert           #+#    #+#             */
-/*   Updated: 2022/06/20 16:01:16 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/06/20 17:01:25 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-t_stack *stack_new(int num)
+t_stack	*stack_new(int num)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = malloc(sizeof(t_stack));
 	tmp->num = num;
@@ -22,7 +22,7 @@ t_stack *stack_new(int num)
 	return (tmp);
 }
 
-t_stack *stack_last(t_stack *lst)
+t_stack	*stack_last(t_stack *lst)
 {
 	if (!lst)
 		return (lst);
@@ -33,23 +33,23 @@ t_stack *stack_last(t_stack *lst)
 	return (lst);
 }
 
-void stack_append(t_stack **lst, t_stack *new)
+void	stack_append(t_stack **lst, t_stack *new)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (!*lst)
 	{
 		*lst = new;
-		return;
+		return ;
 	}
 	tmp = stack_last(*lst);
 	tmp->next = new;
 }
 
-t_stack *stack_arr(char **ptr)
+t_stack	*stack_arr(char **ptr)
 {
-	t_stack *lst;
-	int i;
+	t_stack	*lst;
+	int		i;
 
 	i = 0;
 	lst = NULL;
@@ -62,11 +62,11 @@ t_stack *stack_arr(char **ptr)
 	return (lst);
 }
 
-void stack_add_index(t_stack **list)
+void	stack_add_index(t_stack **list)
 {
-	t_stack *list_cpy;
-	int *tab;
-	int i;
+	t_stack	*list_cpy;
+	int		*tab;
+	int		i;
 
 	i = 0;
 	list_cpy = *list;

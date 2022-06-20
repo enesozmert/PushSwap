@@ -6,15 +6,15 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 16:00:31 by eozmert           #+#    #+#             */
-/*   Updated: 2022/06/20 16:00:32 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/06/20 16:54:19 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int is_sorted(t_stack *list)
+int	is_sorted(t_stack *list)
 {
-	int nothing;
+	int	nothing;
 
 	while (list && list->next)
 	{
@@ -27,9 +27,9 @@ int is_sorted(t_stack *list)
 	return (1);
 }
 
-int is_rev_sorted(t_stack *list)
+int	is_rev_sorted(t_stack *list)
 {
-	int nothing;
+	int	nothing;
 
 	while (list && list->next)
 	{
@@ -42,13 +42,13 @@ int is_rev_sorted(t_stack *list)
 	return (1);
 }
 
-int *list_to_arr(t_stack *list)
+int	*list_to_arr(t_stack *list)
 {
-	int i;
-	int c;
-	int *tab;
-	t_stack *list_cpy;
-	
+	int			i;
+	int			c;
+	int			*tab;
+	t_stack		*list_cpy;
+
 	i = 0;
 	c = 0;
 	list_cpy = list;

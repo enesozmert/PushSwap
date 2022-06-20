@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 16:00:01 by eozmert           #+#    #+#             */
-/*   Updated: 2022/06/20 16:00:01 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/06/20 17:06:22 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void count_sort(t_stack **lista, t_stack **listb)
         return ;
 }
 
-void basic_solve(t_stack **lista, t_stack **listb)
+void    basic_solve(t_stack **lista, t_stack **listb)
 {
     count_sort(lista, listb);
 }
