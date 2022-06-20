@@ -6,6 +6,7 @@
 		"vector": "c",
 		"algorithm": "c",
 		"ratio": "c",
-		"header.h": "c"
+		"header.h": "c",
+		"__tuple": "c"
 	}
 }

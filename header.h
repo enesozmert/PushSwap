@@ -15,7 +15,6 @@ typedef struct s_move
 	int count;
 } t_move;
 
-
 typedef struct s_list_min_max
 {
 	int min;
@@ -53,10 +52,6 @@ int		is_rev_sorted(t_stack *list);
 void	hard_solve(t_stack **lista, t_stack **listb);
 void	medium_solve(t_stack **lista, t_stack **listb);
 void	basic_solve(t_stack **lista, t_stack **listb);
-void	check_double(char **argv, int i, int j);
-void	check_number(char **s, int i, int j);
-void	ft_exit(char *s);
-char	**fill_args(int ac, char **av);
 
 //tab operation
 int		tab_avg(t_stack *list);
@@ -92,6 +87,7 @@ int		*list_to_arr(t_stack *list);
 int		array_cmp(t_stack *list, int *tab);
 int		*arg_to_arr(char **str);
 int		find_sum(t_stack **lista, int digit);
+
 //binary
 int		*decimal_to_binary(int n);
 int		*number_to_digits(int n);
@@ -106,4 +102,10 @@ int		list_size(t_stack *lst);
 
 //writer
 void	write_file();
+
+//list_control
+
+int		check_overflow(char *str);
+int		check_error(char **av);
+int		check_dup(char **av);
 #endif

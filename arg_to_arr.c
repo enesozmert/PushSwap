@@ -7,20 +7,18 @@ int *arg_to_arr(char **str)
     int c;
     int *tab;
 
-    i = 0;
+    i = 1;
     c = 0;
     len = 0;
     while (str[len])
-    {
         len++;
-    }
-    tab = (int *)malloc(sizeof(int) * (len + 1));
+    tab = (int *)malloc(sizeof(int) * (len));
     while (str[i])
     {
-        tab[c] = atoi(str[i]);
+        tab[c] = ft_atoi(str[i]);
         c++;
         i++;
     }
-    quick_sort(tab, 0, len - 1);
+    //quick_sort(tab, 0, len - 1);
     return (tab);
 }

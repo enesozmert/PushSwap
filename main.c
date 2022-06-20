@@ -83,13 +83,16 @@ int main(int ac, char **av)
 {
 	t_stack *lista;
 	t_stack *listb;
-	char **argv;
 
+	if (ac < 2)
+		return (0);
+	if (check_error(&av[1]) || check_dup(av))
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (-1);
+	}
 	lista = stack_arr(&av[1]);
 	listb = NULL;
-	argv = fill_args(ac, av);
-	check_double(argv, 0, 0);
-	check_number(argv, 0, 0);
 	if (ac == 4)
 		basic_solve(&lista, &listb);
 	else if (ac == 6)
