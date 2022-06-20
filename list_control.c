@@ -1,8 +1,8 @@
 #include "header.h"
 
-int	check_overflow(char *str)
+int check_overflow(char *str)
 {
-	long long	num;
+	long long num;
 
 	num = ft_atoi_long(str);
 	if (num < INT_MIN || num > INT_MAX)
@@ -10,11 +10,11 @@ int	check_overflow(char *str)
 	return (0);
 }
 
-int	check_error(char **av)
+int check_error(char **av)
 {
-	int		i;
-	int		j;
-	char	c;
+	int i;
+	int j;
+	char c;
 
 	i = -1;
 	while (av[++i])
@@ -32,7 +32,7 @@ int	check_error(char **av)
 	return (0);
 }
 
-int	check_dup(char **av)
+int check_dup(char **av)
 {
 	int *arr;
 	int size;
@@ -41,10 +41,9 @@ int	check_dup(char **av)
 
 	i = 0;
 	j = 0;
-	size = 1;
+	size = 0;
 	arr = arg_to_arr(av);
-	while (av[size])
-		size++;
+	while (av[++size])
 	while (i < size)
 	{
 		j = 0;

@@ -1,6 +1,6 @@
 #include "header.h"
 
-static void count_sort(t_stack **lista, t_stack **listb, int *count_move)
+static void count_sort(t_stack **lista, t_stack **listb)
 {
     int i;
 
@@ -12,17 +12,14 @@ static void count_sort(t_stack **lista, t_stack **listb, int *count_move)
             if ((*lista)->index == 0 || (*lista)->index == 1)
             {
                 handler("pb", lista, listb);
-                (*count_move)++;
             }
             else if ((*lista)->next->index == 0 || (*lista)->next->index == 1)
             {
                 handler("sa", lista, listb);
-                (*count_move)++;
             }
             else
             {
                 handler("ra", lista, listb);
-                (*count_move)++;
             }
 
             i++;
@@ -33,7 +30,6 @@ static void count_sort(t_stack **lista, t_stack **listb, int *count_move)
         if ((*listb)->index < (*listb)->next->index)
         {
             handler("sb", lista, listb);
-            (*count_move)++;
         }
     }
 }
@@ -43,12 +39,11 @@ void medium_solve(t_stack **lista, t_stack **listb)
     int count_move;
 
     count_move = 0;
-    count_sort(lista, listb, &count_move);
+    count_sort(lista, listb);
     basic_solve(lista, listb);
     while (list_size(*listb) > 0)
     {
         handler("pa", lista, listb);
         (count_move)++;
     }
-    // printf("count move %d\n", count_move);
 }

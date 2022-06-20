@@ -37,19 +37,3 @@ void quick_sort(int *array, int low, int high)
 		quick_sort(array, pi + 1, high);
 	}
 }
-
-int find_min(int *tab)
-{
-	int i;
-	int min;
-
-	i = 0;
-	min = 2147483647;
-	while (tab[i])
-	{
-		if (tab[i] < min)
-			min = tab[i];
-		i++;
-	}
-	return (min);
-}

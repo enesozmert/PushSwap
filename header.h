@@ -15,18 +15,11 @@ typedef struct s_move
 	int count;
 } t_move;
 
-typedef struct s_list_min_max
-{
-	int min;
-	int max;
-}	t_list_min_max;
-
 typedef struct s_stack
 {
 	int		num;
 	int		index;
 	int 	*binary;
-	int		*digits;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
@@ -41,21 +34,12 @@ typedef struct s_move_select
 
 //main push_swap;
 void	push_swap(int ac, char **av);
-int 	compaire(t_stack **lista, t_stack **listb);
-void	coma(t_stack **lista);
-void	comb(t_stack **listb);
-void 	push_coma(t_stack **lista, t_stack **listb);
-int 	ft_cmp(int num1, int num2);
-int		binary_of_zero(t_stack *lista, int index);
+int 	compaire(t_stack **lista, t_stack **listb, int ac);
 int		is_sorted(t_stack *lista);
 int		is_rev_sorted(t_stack *list);
 void	hard_solve(t_stack **lista, t_stack **listb);
 void	medium_solve(t_stack **lista, t_stack **listb);
 void	basic_solve(t_stack **lista, t_stack **listb);
-
-//tab operation
-int		tab_avg(t_stack *list);
-int		find_min(int *tab);
 
 //operation 
 void	swap_a(t_stack **lista, t_stack **listb);
@@ -84,27 +68,23 @@ void	swap(int *a, int *b);
 
 //tab array
 int		*list_to_arr(t_stack *list);
-int		array_cmp(t_stack *list, int *tab);
 int		*arg_to_arr(char **str);
-int		find_sum(t_stack **lista, int digit);
 
 //binary
 int		*decimal_to_binary(int n);
-int		*number_to_digits(int n);
 
 //lstprint
 void	ft_list_print(t_stack *lst, char *name);
 void	ft_list_index_print(t_stack *lst, char *name);
 void	ft_list_binary_print(t_stack *lst, char *name);
-void	ft_list_digits_print(t_stack *lst, char *name);
+
 //list
 int		list_size(t_stack *lst);
 
 //writer
 void	write_file();
 
-//list_control
-
+//exception handler
 int		check_overflow(char *str);
 int		check_error(char **av);
 int		check_dup(char **av);

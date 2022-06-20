@@ -59,7 +59,7 @@ void stack_add_index(t_stack **list)
 	i = 0;
 	list_cpy = *list;
 	tab = list_to_arr(*list);
-
+	quick_sort(tab, 0, i - 1);
 	while (list_cpy)
 	{
 		i = 0;
@@ -70,7 +70,6 @@ void stack_add_index(t_stack **list)
 				(list_cpy)->index = i;
 				(list_cpy)->binary = decimal_to_binary(i);
 			}
-			(list_cpy)->digits = number_to_digits((list_cpy)->num);
 			i++;
 		}
 		list_cpy = (list_cpy)->next;
