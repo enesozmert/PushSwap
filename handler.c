@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handler.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/20 16:00:19 by eozmert           #+#    #+#             */
+/*   Updated: 2022/06/20 16:00:19 by eozmert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 void handler(char *name, t_stack **lista, t_stack **listb)
@@ -23,6 +35,7 @@ void handler(char *name, t_stack **lista, t_stack **listb)
 	{
 		if (strncmp(name, move_selects[i].name, strlen(name)) == 0)
 		{
+			// printf("%s lista => %d, listb => %d count %d\n", move_selects[i].name, (*lista)->num, (*listb) == NULL ? 0 : (*listb)->num, count);
 			printf("%s\n", move_selects[i].name);
 			count++;
 			move_selects[i].f(lista, listb);

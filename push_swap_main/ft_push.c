@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_to_arr.c                                       :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/20 15:59:47 by eozmert           #+#    #+#             */
-/*   Updated: 2022/06/20 16:02:20 by eozmert          ###   ########.fr       */
+/*   Created: 2022/06/20 16:00:07 by eozmert           #+#    #+#             */
+/*   Updated: 2022/06/20 16:04:53 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
-int *arg_to_arr(char **str)
+void		push_a(t_stack **lista, t_stack **listb)
 {
-    int i;
-    int len;
-    int c;
-    int *tab;
+	t_stack *bot_b;
 
-    i = 1;
-    c = 0;
-    len = 0;
-    while (str[len])
-        len++;
-    tab = (int *)malloc(sizeof(int) * (len - 2));
-    while (str[i])
-    {
-        tab[c] = ft_atoi(str[i]);
-        c++;
-        i++;
-    }
-    return (tab);
+	if (*listb == NULL)
+		return ;
+	bot_b = (*listb)->next;
+	(*listb)->next = *lista;
+	*lista = *listb;
+	*listb = bot_b;
+}
+
+void		push_b(t_stack **lista, t_stack **listb)
+{
+	t_stack *bot_a;
+
+	if (*lista == NULL)
+		return ;
+	bot_a = (*lista)->next;
+	(*lista)->next = *listb;
+	*listb = *lista;
+	*lista = bot_a;
 }

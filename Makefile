@@ -11,7 +11,7 @@ AR			=	ar rcs
 #Files
 
 COMMON		= 	main push_swap \
-ft_swap ft_push ft_rotate ft_rev_rotate handler \
+push_swap_main/ft_swap push_swap_main/ft_push push_swap_main/ft_rotate push_swap_main/ft_rev_rotate handler \
 arg_to_arr sort_algoritm decimal_to_binary \
 list_print hard_solve medium_solve basic_solve \
 list_control list_operations list_size
@@ -41,15 +41,15 @@ build:
 $(NAME):	$(OBJ)
 			@$(AR) $(NAME) $(OBJ)
 			@ranlib $(NAME)
-			@echo SoLong compiled!
+			@echo $(NAME) compiled!
 
 clean:
 			@$(RM) -rf $(OBJ)
-			@echo SoLong objects files cleaned!
+			@echo $(NAME) objects files cleaned!
 
 fclean:		clean
 			@$(RM) -f $(NAME)
-			@echo SoLong executable files cleaned!
+			@echo $(NAME) executable files cleaned!
 
 re:			fclean all
 			@echo Cleaned and rebuilt

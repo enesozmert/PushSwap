@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   header.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/20 16:00:26 by eozmert           #+#    #+#             */
+/*   Updated: 2022/06/20 16:00:26 by eozmert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef	HEADER_H
 #define HEADER_H
 
@@ -34,7 +46,7 @@ typedef struct s_move_select
 
 //main push_swap;
 void	push_swap(int ac, char **av);
-int 	compaire(t_stack **lista, t_stack **listb, int ac);
+void 	compaire(t_stack **lista, t_stack **listb, int ac);
 int		is_sorted(t_stack *lista);
 int		is_rev_sorted(t_stack *list);
 void	hard_solve(t_stack **lista, t_stack **listb);

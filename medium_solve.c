@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   medium_solve.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/20 16:01:00 by eozmert           #+#    #+#             */
+/*   Updated: 2022/06/20 16:01:13 by eozmert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
-static void count_sort(t_stack **lista, t_stack **listb)
+static void count_sort(t_stack **lista, t_stack **listb, int *count_move)
 {
     int i;
 
@@ -12,14 +24,17 @@ static void count_sort(t_stack **lista, t_stack **listb)
             if ((*lista)->index == 0 || (*lista)->index == 1)
             {
                 handler("pb", lista, listb);
+                (*count_move)++;
             }
             else if ((*lista)->next->index == 0 || (*lista)->next->index == 1)
             {
                 handler("sa", lista, listb);
+                (*count_move)++;
             }
             else
             {
                 handler("ra", lista, listb);
+                (*count_move)++;
             }
 
             i++;
@@ -30,6 +45,7 @@ static void count_sort(t_stack **lista, t_stack **listb)
         if ((*listb)->index < (*listb)->next->index)
         {
             handler("sb", lista, listb);
+            (*count_move)++;
         }
     }
 }
@@ -39,11 +55,12 @@ void medium_solve(t_stack **lista, t_stack **listb)
     int count_move;
 
     count_move = 0;
-    count_sort(lista, listb);
+    count_sort(lista, listb, &count_move);
     basic_solve(lista, listb);
     while (list_size(*listb) > 0)
     {
         handler("pa", lista, listb);
         (count_move)++;
     }
+    // printf("count move %d\n", count_move);
 }

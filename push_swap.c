@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/20 16:01:15 by eozmert           #+#    #+#             */
+/*   Updated: 2022/06/20 16:01:16 by eozmert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 t_stack *stack_new(int num)
@@ -59,7 +71,6 @@ void stack_add_index(t_stack **list)
 	i = 0;
 	list_cpy = *list;
 	tab = list_to_arr(*list);
-	quick_sort(tab, 0, i - 1);
 	while (list_cpy)
 	{
 		i = 0;
